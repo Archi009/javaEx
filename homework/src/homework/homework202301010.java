@@ -7,7 +7,7 @@ public class homework202301010 {
 	
 	 //문제 1
 	 Scanner sc = new Scanner(System.in);
-	 System.out.println("x값을 입력하시오>>");
+	 System.out.println("1번 문제 x값을 입력하시오>>");
 	 int x = Integer.parseInt((sc.nextLine()));
 	 System.out.println("y값을 입력하시오>>");
 	 int y = Integer.parseInt((sc.nextLine()));
@@ -30,7 +30,7 @@ public class homework202301010 {
 		// 1900년은 100의 배수이고 400의 배수는 아니기 때문에 윤년이 아닙니다.
 		// HiNT : 이중 IF문 사용
 		// 문제출처, 백준(https://www.acmicpc.net/) 2753번 문제 
-	 System.out.println("년도를 입력하세요");
+	 System.out.println("2번 문제 년도를 입력하세요");
 	 int year = Integer.parseInt((sc.nextLine()));
 	 if(year%4 == 0 && year%100 != 0 || year%400 == 0 ) {
 		 System.out.println(year + "년은 윤년입니다.");
@@ -40,7 +40,21 @@ public class homework202301010 {
 			// 구현하세요.
 			// 예를 들어, 가위가 주어졌을 때 "이기기 위해선 바위를 내야합니다." 라고 출력하도록 하세요.
 			// 한 단어를 입력받을 경우 Scanner객체의 next() 함수를 사용하면 됩니다.
-	 System.out.println("가위바위보!>>");
+	 System.out.println(" 3번 문제 가위바위보!>>");
+	 String rps = sc.nextLine();
+	 switch(rps) {
+	 case "바위":
+		 System.out.println("이기기위해선 보를 내야 합니다.");
+		 break;
+	 case "가위":
+		 System.out.println("이기기위해선 바위를 내야 합니다.");
+		 break;
+	 case "보":
+		 System.out.println("이기기위해선 가위를 내야 합니다.");
+		 break;
+     default :
+    	 System.out.println("가위, 바위, 보 중 하나를 내야 합니다.");
+	 }
 	 
 	 
 	 
@@ -50,10 +64,15 @@ public class homework202301010 {
 			//   *** 3번째 줄 3번째 별 셋
 			//  **** 4번째 줄 2번째 별 넷
 			// ***** 5번재 줄 1번째 별 다섯
-	 for(int i = 0;i <5; i++) {
-		 for(int j = 5; j > i; i--){
-			 System.out.println("");
+	 for(int i = 1;i <=5; i++) {
+		 for(int j = 5; j >= 1; j--){
+			 if(j>i) {
+				 System.out.print(" ");
+			 }else if(j<=i) {
+				 System.out.print("*");
+			 }
 		 }
+		 System.out.println();
 		 
 	 }
 	 
@@ -63,6 +82,16 @@ public class homework202301010 {
 			// 2 X 1 = 2
 			// 2 X 2 = 4
 			// 2 X 3 = 6
+	 System.out.println("원하는 구구단을 입력하시오>>");
+	 int m = Integer.parseInt((sc.nextLine()));
+	 System.out.println("원하는 범위를 입력하시오.>>");
+	 int n = Integer.parseInt((sc.nextLine()));
 	 
+//	 
+		 for(int j=1;j<=n;j++) {
+			 System.out.println(m+"x"+j+"="+(m*j)+"\n");
+		 }
+//		 System.out.println();
+//	 }
 }
 }
