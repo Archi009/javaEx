@@ -9,19 +9,19 @@ public class Array3 {
 		int[] ary;
 		// 배열의 크기(인덱스 갯수)
 		int no;
-
+		//배열의 크기 입력
 		System.out.println("배열의 크기>");
 		no = Integer.parseInt(sc.nextLine());
 
 		ary = new int[no];
-
+		//크기 확인
 		System.out.println(ary.length);
-
+		//일일이 배열 입력
 		for (int i = 0; i < ary.length; i++) {
 			System.out.println("입력>");
 			ary[i] = Integer.parseInt(sc.nextLine());
 		}
-
+		//입력 배열 확인
 		for (int i = 0; i < ary.length; i++) {
 			System.out.println(ary[i]);
 		}
