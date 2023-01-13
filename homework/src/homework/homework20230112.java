@@ -62,7 +62,7 @@ public class homework20230112 {
 					}
 					total += prucAry[i].price;
 				}
-				System.out.println("최고가격 제품:"+ expenPro + "을 제외한 가격의 총합"+total);
+				System.out.println("최고가격 제품:"+ expenPro + "을 제외한 가격의 총합"+total+"원");
 					
 			}else if (selectNm == 5) {
 				//종료
