@@ -15,7 +15,7 @@ public class EnumExample {
 		// 일요일 = 1 월요일 =2 ... 금요일 =6 =>switch로 응용가능
 		//오늘 요일을 숫자로 알려줌.
 		int week = cal.get(Calendar.DAY_OF_WEEK);
-		
+		//오늘 요일을 자바는 숫자로 알려주기 때문에 자료를 문자로 바꾸는 작업을 함
 		switch(week) {
 		case 1:
 			today = Week.SUNDAY;
