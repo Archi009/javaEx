@@ -25,21 +25,39 @@ public class Num4Other {
 				dice = new int[size];
 
 			} else if (selectNo == 2) {
+				int count = 0;
 				while (true) {
 					int random = (int) (Math.random() * size) + 1;
-					dice[random-1]++;
-					if(random ==5) break;
+					dice[random - 1]++;
+					count++;
+					if (random == 5)
+						break;
 				}
-
+				System.out.println("5가 나올 대까지 주사위를 " + count + "번 굴렷습니다.");
 			} else if (selectNo == 3) {
-
+				for (int i = 0; i < dice.length; i++) {
+					System.out.printf("%d은 %d번 나왔습니다.\n", (i + 1), dice[i]);
+				}
 			} else if (selectNo == 4) {
-
+				int max = 0;
+				for (int num : dice) {
+					if (max < num) {
+						max = num;
+					}
+				}
+				int i = 0;
+				for (; i < dice.length; i++) {
+					if (dice[i] == max)
+						break;
+				}
+				System.out.println("가장 많이 나온 수는 " + (i + 1) + "입니다.");
 			} else if (selectNo == 5) {
-
+				run = false;
+				System.out.println("프로그램 종료");
+				break;
 			}
-			
 
 		}
+		sc.close();
 	}
 }
