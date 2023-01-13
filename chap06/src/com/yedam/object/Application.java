@@ -49,7 +49,7 @@ public class Application {
 					System.out.println("나이>");
 					stdAry[i].age = Integer.parseInt(sc.nextLine());
 					System.out.println("학교이름>");
-					stdAry[i].schoolName = sc.nextLine();
+					stdAry[i].school = sc.nextLine();
 
 					// 성적 입력
 					System.out.println("국어 점수>");
@@ -138,7 +138,7 @@ public class Application {
 		System.out.println("s2의 정보 ");
 		s2.age = 30;
 		s2.name = "대예담";
-		s2.schoolName = "예담 대학원";
+		s2.school = "예담 대학원";
 		s2.getInfo();
 
 		s1.age = 20;
@@ -147,7 +147,7 @@ public class Application {
 		System.out.println("문서에서 수정된 s1의 정보 ");
 		System.out.println("학생의 나이 : " + s1.age);
 		System.out.println("학생의 이름 : " + s1.name);
-		System.out.println("재학중인 학교 : " + s1.schoolName);
+		System.out.println("재학중인 학교 : " + s1.school);
 
 		Korean k1 = new Korean("fork", "02003040");
 

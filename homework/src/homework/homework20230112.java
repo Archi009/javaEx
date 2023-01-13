@@ -4,6 +4,16 @@ import java.util.Scanner;
 
 
 public class homework20230112 {
+	static Scanner sc = new Scanner(System.in);
+	static Product[] prucAry = null;
+	public static int menuSelect() {
+		System.out.println("======================");
+		System.out.println("1.상품 수|2.상품 및 가격 입력|3.제품별 가격|4.분석|5.종료");
+		System.out.println("======================");
+		
+	    int selectNm = Integer.parseInt(sc.nextLine());
+	          return selectNm;
+	}
 	public static void main(String[] args) {
 		// 문제2) 다음은 키보드로부터 상품 수와 상품 가격을 입력받아서
 		// 최고 가격을 가지는 제품과 해당 제품을 제외한 제품들의 총 합을 구하는 프로그램을 작성하세요.
@@ -14,17 +24,10 @@ public class homework20230112 {
 		// 출력예시, "상품명 : 가격"
 		// 4) 분석기능은 최고 가격을 가지는 제품과 해당 제품을 제외한 제품들의 총합을 구합니다.
 		// 5) 종료 시에는 프로그램을 종료한다고 메세지를 출력하도록 구현하세요.
-		Scanner sc = new Scanner(System.in);
-		Product[] prucAry = null;
 		int prucNm = 0;
 		
-		while(true) {
-			
-			System.out.println("======================");
-			System.out.println("1.상품 수|2.상품 및 가격 입력|3.제품별 가격|4.분석|5.종료");
-			System.out.println("======================");
-			
-			int selectNm = Integer.parseInt(sc.nextLine());
+		while(true) {			
+			 int selectNm = menuSelect();
 			if (selectNm == 1) {
 				//상품수
 				System.out.println("상품수를 입력하시오>>");
@@ -62,7 +65,7 @@ public class homework20230112 {
 					}
 					total += prucAry[i].price;
 				}
-				System.out.println("최고가격 제품:"+ expenPro + "을 제외한 가격의 총합"+total+"원");
+				System.out.println("최고가격 제품:"+ expenPro + "을 제외한 가격의 총합"+(total-max)+"원");
 					
 			}else if (selectNm == 5) {
 				//종료
