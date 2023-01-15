@@ -72,17 +72,36 @@ public class loopFor {
 		
 		
 		//교수 풀이 
-		System.out.println("갯수>");
-		int count = Integer.parseInt((sc.nextLine()));	
+		System.out.println("데이터 받을 개수를 입력하세요");
+		int data = Integer.parseInt(sc.nextLine());	//입력할 데이터 개수 입력 받음
 		int total = 0;
-		int min = 0;
+		int avg = 0;
 		int max = 0;
+		int min = 0;
 		
-		for(int i =0 ; i< count; i++) {
-			
+		for(int i = 0; i < data; i++) {
+			System.out.println("입력 > ");	
+			int input = Integer.parseInt(sc.nextLine());	//데이터 입력
+			total += input;	//입력받은 총 합 구하기
+			//최대값, 최소값
+			if(i == 0) {
+				max = input;
+				min = input;
+			}
+			//최대값
+			if(input > max) {
+				max = input;
+			}
+			//최소값
+			if (input < min) {
+				min = input;
+			}
 		}
-		System.out.printf("평균: %5.2f", (double)total/count);
-		
+		System.out.println("총 합 : " + total);
+		// 반복문에서 총 합, 입력받은 개수를 활용해서 평균구하기
+		System.out.printf("평균 : %5.2f \n", (double)total/data);	 // = System.out.println((double)avg/data);
+		System.out.println("최대값 : " + max);
+		System.out.println("최소값 : " + min);
 		
 		//2번 up and down
 		//임의의 랜덤 값 (1~100) 추출하여 5번의 기회안에
@@ -90,7 +109,7 @@ public class loopFor {
 		//예시) 랜덤값 : 50
 		//		입력값 : 30
 		//		=>  더 큰수를 입력하세요
-		// 		입력밧: 40
+		// 		입력값: 40
 		//		=>더 큰수를 입력하세요
 		// 		입력값 :70
 		//      =>더 작은 수를 입력하세요
