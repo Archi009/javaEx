@@ -2,7 +2,7 @@ package com.yedam.java.ch02_02;
 
 public class SmartTelevision implements SmartTv{
 
-	public int volume;
+	private int volume;
 
 	@Override
 	public void turnOn() {
