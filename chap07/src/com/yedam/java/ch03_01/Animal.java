@@ -12,7 +12,9 @@ public abstract class Animal {
 	}
 	
 	public abstract void sound(); 
-	
+	public void test() {
+		System.out.println("가자");
+	}
 	
 	
 }
