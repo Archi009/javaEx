@@ -22,7 +22,7 @@ public class RandomGame {
 			} else if (selectNm == 2) {
 				game.leftDownButton();
 			} else if (selectNm == 3) {
-				game.rightUpButton();
+				game.rightUpButton(); 
 			} else if (selectNm == 4) {
 				game.rightDownButton();
 			} else if (selectNm == 5) {
