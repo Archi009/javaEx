@@ -6,7 +6,6 @@ public class RandomGame {
 	private static Scanner sc = new Scanner(System.in);
 	private static Keypad game;
 	private static int num = (int) (Math.random() * 2) + 1;
-	private static boolean running = true;
 
 	private static void run() {
 		while (true) {
@@ -29,11 +28,15 @@ public class RandomGame {
 			} else if (selectNm == 5) {
 				game.changeMode();
 			} else if (selectNm == 0) {
-				num = 2;
-				break;
+				if(num==1) {
+					game = new ArcadeGame();
+					num =2;
+				}else {
+					game = new RPGgame();
+					num =1;
+				}
 			} else if (selectNm == 9) {
 				System.out.println("EXIT");
-				running = false;
 				break;
 			} else {
 				System.out.println("바른 번호를 입력하시오>>");
@@ -41,16 +44,15 @@ public class RandomGame {
 		}
 	}
 	public static void main(String[] args) {
-		while (running) {
 			if (num == 1) {
 				game = new RPGgame();
-				run();
+			
 
 			} else if (num == 2) {
 				game = new ArcadeGame();
-				run();
+				
 
 			}
-		}
+			run();
 	}
 }
