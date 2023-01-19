@@ -26,9 +26,23 @@ public class HashSetExample {
 			String element = iterator.next();
 			System.out.println("\t" + element);
 		}//순서가 없기 때문에 출력시에도 순서 없이 막 출력된다.
+		System.out.println();
 		
+		set.remove("JDBC");
+		set.remove("iBATIS");
 		
-		
+		for(String skill : set) {
+			System.out.println("\t"+skill);
+		}
+		//인스턴스는 존재 하지만 내부 값들의 연결이 끊김
+		System.out.println();
+		set.clear();
+		if(set.isEmpty()) {			
+			System.out.println("\t내부가 비었습니다");
+		}
+
+
+	
 		
 	}
 }
