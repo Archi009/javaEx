@@ -3,7 +3,7 @@ package com.yedam.java.exam1;
 public class TossCard extends Card {
 //  필드
 	private String company = "Toss";
-	String cardStaff ;
+	private String cardStaff ;
 	
 	
 
@@ -14,6 +14,13 @@ public class TossCard extends Card {
 		this.cardStaff = cardStaff;
 	}
 //	메소드
+	public String getCompany() {
+		return company;
+	}
+	public String getCardstaff() {
+		return cardStaff;
+	}
+	
 	@Override
 	public void showCardInfo() {
 		System.out.println("카드정보 - Card No, "+this.getCardNo());

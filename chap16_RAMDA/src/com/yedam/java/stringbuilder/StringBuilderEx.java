@@ -1,6 +1,6 @@
 package com.yedam.java.stringbuilder;
 
-public class StringBuilder {
+public class StringBuilderEx {
 	public static void main(String[] args) {
 		//메모리 1개 사용
 		StringBuilder sb = new StringBuilder();
@@ -9,4 +9,6 @@ public class StringBuilder {
 		sb.append(false);
 		
 	}
+
+	
 }
