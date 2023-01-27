@@ -111,7 +111,7 @@ public class EmpDAO {
 		}
 		return null; // 조회된 데이터 없음.
 	}
-	//수정.
+	//입력.
 	public int addEmp(EmpVO emp)	{
 		connect();
 		sql = "insert into emp_temp (employee_id, last_name, email, hire_date, job_id )"
@@ -125,7 +125,7 @@ public class EmpDAO {
 			psmt.setString(4, emp.getHireDate());
 			psmt.setString(5, emp.getJobId());
 			
-			r = psmt.executeUpdate(); // 처리된 건수. 성공하면 1
+			r = psmt.executeUpdate(); // 처리된 건수. 성공하면 1 //1개 처리 했으니까.
 									
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
