@@ -31,10 +31,9 @@ public class ManMain {
 //		default:
 //			break;
 //		}
-		Managing managing = new Managing();
-		ManVO ma2 = managing.getMan(uId);
-		
-		if (ma2 == null) {
+		id = "관리자";
+//		id = "고객";
+		if (id=="관리자") {
 			while (true) {
 				// 관리자
 				System.out.println(
@@ -122,9 +121,9 @@ public class ManMain {
 			
 			
 			
-		} else if (ma2 != null) {
+		} else if (id!="관리자") {
 			while (true) {
-				// 관리자
+				// 고객
 				System.out.println(
 						"=======================================================================================");
 				System.out.println("==| 1.전체 회원 조회 | 2.단일 회원 조회| 3.회원 등급 작성 | 4.수업 등록/삭제 | 5.회원 삭제 | 6.로그아웃");
