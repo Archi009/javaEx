@@ -36,17 +36,17 @@ public class Custumer {
 	//목록 조회
 	public List<ManVO> manVoListForCt(){
 		connect();
-		sql = "select user_id user_name, user_class, user_grade from host_id order by user_grade from host_id";
+		sql = "select user_id, user_name, user_class, user_grade from host_id";
 		List <ManVO> list = new ArrayList <>();
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery(sql);
 			while(rs.next()) {
 				ManVO man = new ManVO();
-				man.setUserId(rs.getString(2));
-				man.setUserNm(rs.getString(4));
-				man.setUserCl(rs.getString(7));
-				man.setUserGd(rs.getString(8));
+				man.setUserId(rs.getString(1));
+				man.setUserNm(rs.getString(2));
+				man.setUserCl(rs.getString(3));
+				man.setUserGd(rs.getString(4));
 				list.add(man);
 			}
 		} catch (SQLException e) {
@@ -54,11 +54,33 @@ public class Custumer {
 		}
 		return list;
 	}
+	//본인조회
+	public ManVO getSelfForCt(String id) {
+		sql = "select user_id, user_addr, user_phone, user_class, user_grade from host_id where user_name = ?";
+		connect();
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+			rs = psmt.executeQuery();
+		if(rs.next()) {
+			ManVO man = new ManVO();
+			man.setUserId(rs.getString(1));
+			man.setUserAd(rs.getString(2));
+			man.setUserPh(rs.getString(3));
+			man.setUserCl(rs.getString(4));
+			man.setUserGd(rs.getString(5));
+			return man;
+		}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 	//반 별 조회
-	public ManVO getManForCt(String grade) {
-		sql = "selet user_id user_name, user_class, user_grade from host_id order by user_grade from user_id where user_grade = ?";
+	public List<ManVO> getManForCt(String grade) {
 		connect();
+		sql = "select user_id user_name, user_class, user_grade from host_id where user_grade = ?";
 		List <ManVO> list = new ArrayList <>();
 		
 		try {
@@ -67,28 +89,28 @@ public class Custumer {
 			rs = psmt.executeQuery(sql);
 		while(rs.next())  {
 			ManVO man = new ManVO();
-			man.setUserId(rs.getString(2));
-			man.setUserNm(rs.getString(4));
-			man.setUserCl(rs.getString(7));
-			man.setUserGd(rs.getString(8));
-			return man;
+			man.setUserId(rs.getString(1));
+			man.setUserNm(rs.getString(2));
+			man.setUserCl(rs.getString(3));
+			man.setUserGd(rs.getString(4));
+			list.add(man);
 		}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	public ManVO getForCt(String grade) {
-		sql = "selet * from user_id where user_grade = "+grade;
+	//비밀번호 조회
+	public ManVO getPsForCt(String id) {
 		connect();
+		sql = "select user_ps from host_id where user_id = ?";
 		try {
 			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
 			rs = psmt.executeQuery(sql);
 		if(rs.next()) {
 			ManVO man = new ManVO();
-			man.setUserId(rs.getString(2));
-			man.setUserId(rs.getString(4));
-			man.setUserId(rs.getString(7));
+			man.setUserPs(rs.getString(1));		
 			return man;
 		}
 		} catch (SQLException e) {
@@ -99,7 +121,7 @@ public class Custumer {
 	// 입력
 	public int addManForCt(ManVO man) {
 		connect();
-		sql = "insert into user_id (user_no, user_id, user_ps,user_name,user_addr,user_phone"
+		sql = "insert into host_id (user_no, user_id, user_ps,user_name,user_addr,user_phone"
 		+"values(seq.nextval,?,?,?,?,?)";
 		int r=0;
 		try {
@@ -119,10 +141,10 @@ public class Custumer {
 	}
 	
 	//클래스, 반 수정
-	//클래스 수정
+	//클래스 신청
 	public int updateClForCt(String n , String cl) {
 		connect();
-		sql="update user_id set user_class = ? where user_id = ?";
+		sql="update host_id set user_class = ? where user_id = ?";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -138,10 +160,10 @@ public class Custumer {
 		
 	}
 	
-	//반 수정
+	//반 신청
 	public int updateGrForCt(String n , String gr) {
 		connect();
-		sql="update user_id set user_grade = ? where user_id = ?";
+		sql="update host_id set user_grade = ? where user_id = ?";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -157,10 +179,10 @@ public class Custumer {
 		
 	}
 	
-	//반 클래스 모두 수정
+	//반 클래스 모두 신청
 	public int updateAllForCt(String n , String cl, String gr) {
 		connect();
-		sql="update user_id set user_class = ?,user_grade where user_id = ?";
+		sql="update host_id set user_class = ?,user_grade where user_id = ?";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -177,7 +199,7 @@ public class Custumer {
 		
 	}
 	
-	//삭제
+	//탈퇴
 	public int delManForCt(String n,String id) {
 		connect();
 		sql = "delete from host_id where user_name = ? and user_id = ?";
@@ -197,7 +219,7 @@ public class Custumer {
 	//클래스 삭제
 	public int delClForCt(String n) {
 		connect();
-		sql="update user_id set user_class = null where user_id = ?";
+		sql="update host_id set user_class = null where user_id = ?";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -211,10 +233,10 @@ public class Custumer {
 		return r;
 		
 	}
-	//반 삭제
+	//수업 취소
 	public int delGrForCt(String n) {
 		connect();
-		sql="update user_id set user_grade = null where user_id = ?";
+		sql="update host_id set user_grade = null where user_id = ?";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);

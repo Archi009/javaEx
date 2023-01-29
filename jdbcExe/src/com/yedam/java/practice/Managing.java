@@ -54,6 +54,7 @@ public class Managing {
 				list.add(man);
 			}
 		} catch (SQLException e) {
+			
 			e.printStackTrace();
 		}
 		return list;
@@ -85,16 +86,16 @@ public class Managing {
 	// 입력
 	public int addMan(ManVO man) {
 		connect();
-		sql = "insert into host_id (user_no, user_id, user_ps,user_name,user_addr,user_phone"
+		sql = "insert into host_id (user_id, user_ps,user_name,user_addr,user_phone"
 		+"values(seq.nextval,?,?,?,?,?)";
 		int r=0;
 		try {
 			psmt =conn.prepareStatement(sql);
-			psmt.setString(2, man.getUserId());
-			psmt.setString(3, man.getUserPs());
-			psmt.setString(4, man.getUserNm());
-			psmt.setString(5, man.getUserAd());
-			psmt.setString(6, man.getUserPh());
+			psmt.setString(1, man.getUserId());
+			psmt.setString(2, man.getUserPs());
+			psmt.setString(3, man.getUserNm());
+			psmt.setString(4, man.getUserAd());
+			psmt.setString(5, man.getUserPh());
 			
 			r= psmt.executeUpdate();
 			
@@ -108,12 +109,11 @@ public class Managing {
 	//클래스 수정
 	public int updateCl(String n , String cl) {
 		connect();
-		sql="update host_id set user_class = ? where user_id = ?";
+		sql="update host_id set user_class = ? where user_name = ?";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1,cl);
-			psmt.setString(2, n);
 			
 			r= psmt.executeUpdate();
 			
@@ -127,7 +127,7 @@ public class Managing {
 	//반 수정
 	public int updateGr(String n , String gr) {
 		connect();
-		sql="update host_id set user_grade = ? where user_id = ?";
+		sql="update host_id set user_grade = ? where user_name = ?";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -146,7 +146,7 @@ public class Managing {
 	//반 클래스 모두 수정
 	public int updateAll(String n , String cl, String gr) {
 		connect();
-		sql="update host_id set user_class = ?,user_grade = ? where user_id = ?";
+		sql="update host_id set user_class = ?,user_grade = ? where user_name = ?";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -184,7 +184,7 @@ public class Managing {
 	//클래스 삭제
 	public int delCl(String n) {
 		connect();
-		sql="update host_id set user_class = null where user_id = ?";
+		sql="update host_id set user_class = null where user_name = ?";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -202,7 +202,7 @@ public class Managing {
 	//반 삭제
 	public int delGr(String n) {
 		connect();
-		sql="update host_id set user_grade = null where user_id = ?";
+		sql="update host_id set user_grade = null where user_name = ?";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);

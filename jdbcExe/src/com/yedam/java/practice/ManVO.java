@@ -60,17 +60,28 @@ public class ManVO {
 	}
 	@Override
 	public String toString() {
-		return "ManVO [no=" + no + ", userId=" + userId + ", userPs=" + userPs + ", userNm=" + userNm + ", userAd="
-				+ userAd + ", userPh=" + userPh + ", userCl=" + userCl + ", userGd=" + userGd + "]";
-	}
-	public String toString(int i) {
-		return "ManVO [ userId=" + userId + ", userNm=" + userNm + ", userAd="
-				+ userAd + ", userPh=" + userPh + ", userCl=" + userCl + ", userGd=" + userGd + "]";
-	}
-	public String toStringManagerSearch() {
-		return "ManVO [ userId=" + userId + ", userAd="
+		return "[no=" + no + ", userId=" + userId + ", userPs=" + userPs + ", userNm=" + userNm + ", userAd="
 				+ userAd + ", userPh=" + userPh + ", userCl=" + userCl + ", userGd=" + userGd + "]";
 	}
 	
+	public String toString(int i) {
+		return "[ 회원 아이디 : " + userId + ", 성함 : " + userNm + ", 주소 : "
+				+ userAd + ", 연락처=" + userPh + ", 회원등급 : " + userCl + ", 진행 중인 수업 : " + userGd + "]";
+	}
+	//회원이 조회
+	public String toStringCuSearch() {
+		return "[ 회원 아이디 : " + userId + ", 이름 : "
+				+ userNm + ", 회원등급= : " + userCl + ", 진행 중인 수업 : " + userGd + "]";
+	}
+	//관리자 조회
+	public String toStringManagerSearch() {
+		return "[ 회원 아이디 : " + userId + ", 주소 : "
+				+ userAd + ", 연락처 : " + userPh + ", 회원등급= : " + userCl + ", 진행 중인 수업 : " + userGd + "]";
+	}
+	//본인 조회
+	public String toStringCuSelfSearch() {
+		return "[ 회원 아이디 : " + userId + ", 주소 : "
+				+ userAd + ", 연락처 : " + userPh + ", 회원등급= : " + userCl + ", 진행 중인 수업 : " + userGd + "]";
+	}
 	
 }
